@@ -9,12 +9,15 @@ import org.testng.annotations.BeforeClass;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    private WebDriver driver;
+    public WebDriver driver;
 
     @BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
       driver = new ChromeDriver();
       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        openSiteAddressbook();
+        login();
+
     }
 
     public void returnToGroupPage() {
@@ -57,6 +60,15 @@ public class TestBase {
 
     public void openSiteAddressbook() {
       driver.get("http://localhost/addressbook/");
+    }
+    public void selectGroup() {
+        driver.findElement(By.name("selected[]")).click();
+
+    }
+
+    public void deleteGroup() {
+        driver.findElement(By.name("delete")).click();
+
     }
 
     @AfterClass(alwaysRun = true)
