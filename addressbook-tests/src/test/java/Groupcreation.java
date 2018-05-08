@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 public class GroupCreation extends TestBase {
 
   @Test(priority = 3)
-  public void testGroupcreation() throws Exception {
+  public void testGroupcreation() {
     goToGroupPage();
     initNewGroupCreation();
     fillGroupForm("name1", "header", "footer");
@@ -12,7 +12,7 @@ public class GroupCreation extends TestBase {
     System.out.println("Test 3 passed");
   }
   @Test(priority = 2)
-  public void testGroupcreationLongName() throws Exception {
+  public void testGroupcreationLongName() {
     goToGroupPage();
     initNewGroupCreation();
     fillGroupForm("name1111111111", "header111111", "footer1111111");
@@ -22,7 +22,7 @@ public class GroupCreation extends TestBase {
 
   }
   @Test(priority = 1)
-  public void testGroupcreationShortName() throws Exception {
+  public void testGroupcreationShortName() {
     goToGroupPage();
     initNewGroupCreation();
     fillGroupForm("n", "h", "f");
