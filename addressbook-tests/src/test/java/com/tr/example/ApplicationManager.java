@@ -1,23 +1,19 @@
+package com.tr.example;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class ApplicationManager {
     public WebDriver driver;
 
-    @BeforeClass(alwaysRun = true)
-    public void setUp() throws Exception {
+    public void start() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        openSiteAddressbook("http://localhost/addressbook/");
-        login("admin", "secret");
-
     }
 
     public void returnToGroupPage() {
@@ -28,16 +24,16 @@ public class TestBase {
         driver.findElement(By.name("submit")).click();
     }
 
-    public void fillGroupForm(String name, String header, String footer) {
+    public void fillGroupForm(GroupData group) {
         driver.findElement(By.name("group_name")).click();
         driver.findElement(By.name("group_name")).clear();
-        driver.findElement(By.name("group_name")).sendKeys(name);
+        driver.findElement(By.name("group_name")).sendKeys(group.getName());
         driver.findElement(By.name("group_header")).click();
         driver.findElement(By.name("group_header")).clear();
-        driver.findElement(By.name("group_header")).sendKeys(header);
+        driver.findElement(By.name("group_header")).sendKeys(group.getHeader());
         driver.findElement(By.name("group_footer")).click();
         driver.findElement(By.name("group_footer")).clear();
-        driver.findElement(By.name("group_footer")).sendKeys(footer);
+        driver.findElement(By.name("group_footer")).sendKeys(group.getFooter());
     }
 
     public void initNewGroupCreation() {
@@ -71,13 +67,12 @@ public class TestBase {
         driver.findElement(By.name("delete")).click();
 
     }
+
     public void initGroupModification() {
         driver.findElement(By.name("edit")).click();
     }
 
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void stop() {
         driver.quit();
     }
 
@@ -101,5 +96,37 @@ public class TestBase {
 
     public void confirmGroupModification() {
         driver.findElement(By.name("update")).click();
+    }
+
+    public int getGroupCount() {
+        return driver.findElements(By.name("selected[]")).size();
+    }
+
+    public void initContactCreation() {
+        driver.findElement(By.xpath("//a[@href='edit.php']")).click();
+    }
+
+    public void fillContactForm(ContactData contactData) {
+        driver.findElement(By.name("firstname")).click();
+        driver.findElement(By.name("firstname")).clear();
+        driver.findElement(By.name("firstname")).sendKeys(contactData.getfName());
+
+        driver.findElement(By.name("lastname")).click();
+        driver.findElement(By.name("lastname")).clear();
+        driver.findElement(By.name("lastname")).sendKeys(contactData.getlName());
+
+        driver.findElement(By.name("address")).click();
+        driver.findElement(By.name("address")).clear();
+        driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
+
+
+    }
+
+    public void confirmContactCreation() {
+        driver.findElement(By.name("submit")).click();
+    }
+
+    public int getContactCount() {
+        return driver.findElements(By.name("selected[]")).size();
     }
 }
