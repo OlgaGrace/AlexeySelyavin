@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class GroupCreation extends TestBase {
 
-  @Test(priority = 3)
+  @Test
   public void testGroupcreation() {
     app.getNavigationHelper().goToGroupPage();
     int before = app.getGroupHelper().getGroupCount();
@@ -18,7 +18,7 @@ public class GroupCreation extends TestBase {
 
     Assert.assertEquals(after, before+1);
   }
-  @Test(priority = 2)
+  @Test
   public void testGroupcreationLongName() {
     app.getNavigationHelper().goToGroupPage();
     app.getGroupHelper().initNewGroupCreation();
@@ -28,7 +28,7 @@ public class GroupCreation extends TestBase {
 
   }
 
-  @Test(priority = 1)
+  @Test
   public void testGroupcreationShortName() {
     app.getNavigationHelper().goToGroupPage();
     app.getGroupHelper().initNewGroupCreation();
