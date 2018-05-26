@@ -50,4 +50,15 @@ public class GroupHelper extends HelperBase{
     public int getGroupCount() {
         return driver.findElements(By.name("selected[]")).size();
     }
+
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void createGroup() {
+       initNewGroupCreation();
+       fillGroupForm(new GroupData("name1111111111", "header111111", "footer1111111"));
+       submitGroupCreation(By.name("submit"));
+       returnToGroupPage();
+    }
 }
