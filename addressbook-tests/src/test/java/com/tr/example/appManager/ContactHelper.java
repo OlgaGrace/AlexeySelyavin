@@ -4,12 +4,11 @@ import com.tr.example.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ContactHelper {
-    public WebDriver driver;
+public class ContactHelper extends HelperBase{
 
     public ContactHelper(WebDriver driver) {
 
-        this.driver = driver;
+        super(driver);
     }
 
     public void initContactCreation() {
@@ -38,5 +37,14 @@ public class ContactHelper {
 
     public int getContactCount() {
         return driver.findElements(By.name("selected[]")).size();
+    }
+
+    public void initContactDeletion() {
+        driver.findElement(By.xpath("//input[@value='Delete']")).click();
+    }
+
+    public void selectContact() {
+        
+        driver.findElement(By.name("selected[]")).click();
     }
 }

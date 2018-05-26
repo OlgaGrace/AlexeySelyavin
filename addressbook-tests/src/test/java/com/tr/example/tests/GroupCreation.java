@@ -1,6 +1,7 @@
 package com.tr.example.tests;
 
 import com.tr.example.model.GroupData;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,7 +13,7 @@ public class GroupCreation extends TestBase {
     int before = app.getGroupHelper().getGroupCount();
     app.getGroupHelper().initNewGroupCreation();
     app.getGroupHelper().fillGroupForm(new GroupData("name1", "header", "footer"));
-    app.getGroupHelper().submitGroupCreation();
+    app.getGroupHelper().submitGroupCreation(By.name("submit"));
     app.getGroupHelper().returnToGroupPage();
     int after = app.getGroupHelper().getGroupCount();
 
@@ -23,7 +24,7 @@ public class GroupCreation extends TestBase {
     app.getNavigationHelper().goToGroupPage();
     app.getGroupHelper().initNewGroupCreation();
     app.getGroupHelper().fillGroupForm(new GroupData("name1111111111", "header111111", "footer1111111"));
-    app.getGroupHelper().submitGroupCreation();
+    app.getGroupHelper().submitGroupCreation(By.name("submit"));
     app.getGroupHelper().returnToGroupPage();
 
   }
@@ -33,7 +34,7 @@ public class GroupCreation extends TestBase {
     app.getNavigationHelper().goToGroupPage();
     app.getGroupHelper().initNewGroupCreation();
     app.getGroupHelper().fillGroupForm(new GroupData("n", "h", "f"));
-    app.getGroupHelper().submitGroupCreation();
+    app.getGroupHelper().submitGroupCreation(By.name("submit"));
     app.getGroupHelper().returnToGroupPage();
 
   }
