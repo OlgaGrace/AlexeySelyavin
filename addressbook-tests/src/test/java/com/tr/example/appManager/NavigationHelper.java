@@ -18,4 +18,7 @@ public class NavigationHelper extends HelperBase{
         click(By.linkText("groups"));
     }
 
+    public void goToHomePage() {
+        driver.findElement(By.xpath("//*[contains(text(),'home')]")).click();
+    }
 }

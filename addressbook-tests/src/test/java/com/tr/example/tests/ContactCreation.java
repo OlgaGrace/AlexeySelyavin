@@ -7,6 +7,7 @@ import org.testng.Assert;
 public class ContactCreation extends TestBase {
     @Test
     public void createContact() {
+        app.getNavigationHelper().goToHomePage();
         int before = app.getContactHelper().getContactCount();
         app.getContactHelper().initContactCreation();
         app.getContactHelper().fillContactForm(new ContactData()

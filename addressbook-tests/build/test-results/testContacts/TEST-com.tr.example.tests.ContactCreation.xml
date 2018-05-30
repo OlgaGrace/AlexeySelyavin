@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tr.example.tests.ContactCreation" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-05-30T13:40:46" hostname="ALYOSHA" time="4.392">
+  <properties/>
+  <testcase name="createContact" classname="com.tr.example.tests.ContactCreation" time="4.392"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
