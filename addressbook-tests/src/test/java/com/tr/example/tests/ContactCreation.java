@@ -19,7 +19,7 @@ public class ContactCreation extends TestBase {
                 .withlName("Selyavin")
                 .withAddress("Israel")
                 .withPhoto(photo)
-                .withGroup("name1"));
+                .withGroup("name 0"));
         app.getContactHelper().confirmContactCreation();
         int after = app.getContactHelper().getContactCount();
         Assert.assertEquals(after,before+1);

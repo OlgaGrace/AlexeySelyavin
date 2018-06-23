@@ -2,6 +2,8 @@ package com.tr.example.tests;
 
 import com.tr.example.model.GroupData;
 import org.openqa.selenium.By;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,6 +14,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class GroupCreation extends TestBase {
+
+
+
   @DataProvider
   public Iterator<Object[]> validGroups() throws IOException {
     List<Object[]> list = new ArrayList<>();
@@ -30,6 +35,7 @@ public class GroupCreation extends TestBase {
 
   @Test(dataProvider = "validGroups")
   public void testGroupcreation(GroupData group) {
+
     app.getNavigationHelper().goToGroupPage();
     int before = app.getGroupHelper().getGroupCount();
     app.getGroupHelper().initNewGroupCreation();
@@ -39,5 +45,6 @@ public class GroupCreation extends TestBase {
     int after = app.getGroupHelper().getGroupCount();
 
     Assert.assertEquals(after, before+1);
+
   }
 }
